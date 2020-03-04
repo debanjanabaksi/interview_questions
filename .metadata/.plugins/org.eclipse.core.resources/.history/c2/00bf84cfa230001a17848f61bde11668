@@ -1,0 +1,54 @@
+package medium;
+
+import java.util.Arrays;
+
+public class LongestIncreasingSubsequence {
+
+	public static void main(String[] args) {
+		int arr[] = { 10, 22, 9, 33, 21, 50, 41, 60 }; 
+        int n = arr.length; 
+        System.out.println("Length of lis is " + longestDP( arr) + "\n" ); 
+	}
+	
+	private static int longestDP(int arr[]) {
+		int[] lis = new int[arr.length];
+		Arrays.fill(lis, -1);
+		lis[0] = 1;
+		for(int i = 1; i<arr.length; i++) {
+			for (int j = 0; j<i; j++) {
+				if(arr[i]> arr[j] && lis[i]<lis[j]+1) {
+					lis[i] = lis[j]+1;
+				}
+			}
+		}
+		int max = 0;
+		for(int i = 1; i<arr.length; i++) {
+			if(lis[i]>max) {
+				max = lis[i];
+			}
+		}
+		return max;
+	}
+	
+	private static int longest(int a[]) {
+		int n = a.length;
+		int[] T = new int[n];
+		int[] R = new int[n];// R stores index of prev longest subsequence upto that pt used to reconstruct subs
+		int len = 0;// len of longest subs till now
+		Arrays.fill(R, -1);
+		T[0] = 0; // T stores indexes of longest subsequence till that pt. used to get length
+		
+		for(int i =1; i<n; i++) {
+			if(a[i] < a[T[0]]) {// smaller than subs beg
+				T[0] = i; // beg of new subs
+			} 
+			if(a[i] > a[T[len]]) {// larger than last in subs
+				len++;// incr in subs len
+				T[len] = i;//  index of new max
+				R[T[len]] = T[len-1];// trace new max's index to prev max's index to construct subs
+			}
+				
+		}
+	}
+
+}

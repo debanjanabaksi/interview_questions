@@ -1,0 +1,30 @@
+package graphs;
+
+import java.util.List;
+
+public class NodesWithinKDistance {
+
+	public static void main(String[] args) {
+		
+
+	}
+	
+	private void Dfs(int k, boolean[] visited, int source, Graph g ) {
+		if (k < 0) {
+			return;
+		}
+		visited[source] = true;
+		System.out.print(" "+source);
+		List<Edge> edges = g.adjacencyList.get(source);
+		
+		for (Edge e : edges) {
+			int v = e.getDestination();
+			if(!visited[v]) {
+				Dfs(k-1,visited,v,g);
+			}
+		}
+	}
+	
+	
+
+}

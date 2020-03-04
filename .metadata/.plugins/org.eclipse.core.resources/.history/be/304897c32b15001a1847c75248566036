@@ -1,0 +1,13 @@
+package graphs;
+
+public class Node {
+	
+	Integer vertex;
+	int minDist;
+	
+	public Node(Integer vertex, int minDist) {
+		this.vertex = vertex;
+		this.minDist = minDist;
+	}
+
+}

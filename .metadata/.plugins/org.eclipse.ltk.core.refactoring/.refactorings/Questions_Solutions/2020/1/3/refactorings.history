@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;trees.ConvertBinaryTreeToDLL.convertSinglePass(...)&apos; to &apos;convertWithPrev&apos;&#x0A;- Original project: &apos;Questions_Solutions&apos;&#x0A;- Original element: &apos;trees.ConvertBinaryTreeToDLL.convertSinglePass(...)&apos;&#x0A;- Renamed element: &apos;trees.ConvertBinaryTreeToDLL.convertWithPrev(...)&apos;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;convertSinglePass&apos;" flags="589826" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;trees{ConvertBinaryTreeToDLL.java[ConvertBinaryTreeToDLL~convertSinglePass~QNode;~QNode;~QNodeWrapper;" name="convertWithPrev" references="true" stamp="1578897208892" version="1.0"/>
+</session>

@@ -1,0 +1,172 @@
+package trees;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class LowestCommonAncestor {
+
+	static boolean v1,v2;
+	public static void main(String[] args) {
+		// Binary Tree
+		BinaryTree tree = new BinaryTree(); 
+        tree.root = new Node(1); 
+        tree.root.left = new Node(2); 
+        tree.root.right = new Node(3); 
+        tree.root.left.left = new Node(4); 
+        tree.root.left.right = new Node(5); 
+        tree.root.right.left = new Node(6); 
+        tree.root.right.right = new Node(7); 
+        System.out.println("LCA(4, 5) = " + 
+                            findLcaBinaryTree(tree.root,4, 5).value); 
+        System.out.println("LCA(4, 6) = " + 
+                            findLcaBinaryTree(tree.root,4, 6).value); 
+        System.out.println("LCA(3, 4) = " + 
+                          findLcaBinaryTree(tree.root,3, 4).value); 
+        System.out.println("LCA(2, 4) = " + 
+        		findLcaBinaryTree(tree.root,2, 4).value); 
+        
+        System.out.println("LCA(4, 5) = " + 
+        		findLcaBinaryTreeIterative(tree.root,4, 5).value); 
+System.out.println("LCA(4, 6) = " + 
+		findLcaBinaryTreeIterative(tree.root,4, 6).value); 
+System.out.println("LCA(3, 4) = " + 
+		findLcaBinaryTreeIterative(tree.root,3, 4).value); 
+System.out.println("LCA(2, 4) = " + 
+		findLcaBinaryTreeIterative(tree.root,2, 4).value); 
+
+
+BinaryTree tree2 = new BinaryTree(); 
+tree2.root = new Node(1); 
+tree2.root.left = new Node(2); 
+tree2.root.right = new Node(3); 
+tree2.root.left.left = new Node(4); 
+tree2.root.left.right = new Node(5); 
+tree2.root.right.left = new Node(6); 
+tree2.root.right.right = new Node(7); 
+
+Node lca = findLcaBinaryTree(tree2.root, 4, 5); 
+if (lca != null) 
+    System.out.println("LCA(4, 5) = " + lca.value); 
+else
+    System.out.println("Keys are not present"); 
+
+lca = findLcaBinaryTree(tree2.root, 4, 10); 
+if (lca != null) 
+    System.out.println("LCA(4, 10) = " + lca.value); 
+else
+    System.out.println("Keys are not present"); 
+    
+     
+
+
+	}
+	
+	private static class Node {
+		public int value;
+		public Node left, right;
+		public Node(int value) {
+			this.value = value;
+		}
+	}
+	
+	//BinaryTree recursive
+	private static Node findLcaBinaryTree(Node root, int x, int y) {
+		if(root == null) {
+			return null;
+		}
+		if(root.value == x) {
+			v1 = true;
+			return root;
+		}
+		if(root.value == y) {
+			v2 = true;
+			return root;
+		}
+		Node left = findLcaBinaryTree(root.left, x,y);
+		Node right = findLcaBinaryTree(root.right, x,y);
+		
+		if(left!=null && right!=null) {
+			return root;
+		} 
+		
+		if( left != null) {
+			return left;
+		}
+		if(right !=null) {
+			return right;
+		}
+		return null;
+	}
+	//Binary Tree iterative
+	private static Node findLcaBinaryTreeIterative(Node root, int x, int y) {
+		List<Node>path1 = new ArrayList<>();
+		List<Node>path2 = new ArrayList<>();
+		if(!findPath(root,x,path1) || !findPath(root,y,path2)) {
+			return null;
+		}
+		int i;
+		for ( i = 0; i< path1.size() && i<path2.size(); i++) {
+			if(path1.get(i)!=path2.get(i)) {
+				break;
+			}
+		}
+		return path1.get(i-1);
+		
+	}
+	
+	private static boolean findPath(Node root, int n, List<Node>path) {
+		if(root == null) {
+			return false;
+		}
+		path.add(root);
+		if(root.value == n) {
+			return true;
+		}
+		if(root.left!=null && findPath(root.left, n, path)) {
+			return true;
+		}
+		if(root.right!=null && findPath(root.right, n, path)) {
+			return true;
+		}
+		path.remove(path.size()-1);
+		return false;
+	}
+
+	//BinarySearchTree recursive
+	private static Node findLcaBinarySearchTree(Node root, int x, int y) {
+		if(root ==  null) {
+			return null;
+		}
+		
+		if(root.value> x && root.value >y) {
+			return findLcaBinarySearchTree(root.left, x,y);
+		}
+		if(root.value < x && root.value<y) {
+			return findLcaBinarySearchTree(root.right, x,y);
+		}
+		return root;
+	}
+	
+	
+	private static  boolean isNodePresentInBST(Node root, int val) {
+		if(root == null) {
+			return false;
+		}
+		if (root.value == val) {
+			return true;
+		}
+		if(root.value>val) {
+			return isNodePresentInBST(root.left, val);
+		}
+		if(root.value<val) {
+			return isNodePresentInBST(root.right, val);
+		}
+		return false;
+	}
+	
+	private static class BinaryTree {
+		Node root;
+	}
+
+}

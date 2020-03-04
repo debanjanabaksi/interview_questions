@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;hard.MinimumSlidingWindow&apos; to &apos;MinimumWindowSubstring&apos;&#x0A;- Original project: &apos;Questions_Solutions&apos;&#x0A;- Original element: &apos;hard.MinimumSlidingWindow&apos;&#x0A;- Renamed element: &apos;hard.MinimumWindowSubstring&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;MinimumSlidingWindow&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;hard{MinimumSlidingWindow.java[MinimumSlidingWindow" matchStrategy="1" name="MinimumWindowSubstring" qualified="false" references="true" similarDeclarations="false" stamp="1577639767257" textual="false" version="1.0"/>
+</session>

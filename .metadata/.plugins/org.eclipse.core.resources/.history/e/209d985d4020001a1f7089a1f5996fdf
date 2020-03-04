@@ -1,0 +1,38 @@
+package hard;
+
+public class ShortestPalindrome {
+
+	public static void main(String[] args) {
+		String s1 = "aacecaaa";
+		String s2 = "abcd";
+		System.out.println("Shortest palindrome created is : "+shortestPalindrome(s1));
+		System.out.println("Shortest palindrome created is : "+shortestPalindrome(s2));
+		
+	}
+	
+	public static String shortestPalindrome(String str) {
+		int n = str.length();
+		int i=0;
+		int j= n-1;
+		while(j>=0) {
+			if(str.charAt(i)==str.charAt(j)) {
+				System.out.println("matching is : "+str.charAt(i)+" "+str.charAt(j));
+				i++;
+			}
+			j--;
+		}
+		System.out.println("i is : "+i);
+		if(i==n) {
+			return str;
+		}
+		String suffix = str.substring(i);
+		System.out.println("Suffix is : "+suffix);
+		String prefix = new StringBuilder(suffix).reverse().toString();
+		System.out.println("Prefix is : "+prefix);
+		String mid = shortestPalindrome(str.substring(0,i));
+		System.out.println("mid is : "+mid);
+		return prefix+mid+suffix;
+		
+	}
+
+}

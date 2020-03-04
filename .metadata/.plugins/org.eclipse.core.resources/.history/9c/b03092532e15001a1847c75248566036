@@ -1,0 +1,13 @@
+package graphs;
+
+/*
+ * Find min throws needed to win snakes and ladder
+ */
+public class SnakesAndLadder {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
